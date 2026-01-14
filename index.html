@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="id">
-    <meta name="google-site-verification" content="_BtO2Y2pqgApGHJJiwxARncOmhWGbfbTXWtLUZvRn3U" />
 <head>
     <meta charset="UTF-8">
-    <title>Pembagi Kelompok Belajar</title>
+
+    <!-- Verifikasi Google -->
+    <meta name="google-site-verification" content="_BtO2Y2pqgApGHJJiwxARncOmhWGbfbTXWtLUZvRn3U" />
+
+    <!-- SEO BASIC -->
+    <title>Pembagi Kelompok Siswa Otomatis Online | Tools Guru Gratis</title>
+    <meta name="description" content="Alat online gratis untuk membagi kelompok siswa secara otomatis dan adil berdasarkan jumlah siswa dan kelompok. Cocok untuk guru dan pelajar.">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -42,12 +48,28 @@
             margin-top: 10px;
             border-radius: 5px;
         }
+        .deskripsi {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #333;
+        }
     </style>
 </head>
+
 <body>
 
 <div class="box">
-    <h2>Pembagi Kelompok Belajar</h2>
+
+    <!-- H1 WAJIB -->
+    <h1>Pembagi Kelompok Siswa Otomatis</h1>
+
+    <p class="deskripsi">
+        Website ini membantu guru dan pelajar membagi kelompok belajar secara otomatis,
+        cepat, dan adil. Sistem akan mengacak nomor absen siswa (gacha) lalu membagi
+        ke dalam kelompok sesuai jumlah yang ditentukan.
+    </p>
+
+    <h2>Form Pembagian Kelompok</h2>
 
     <label>Jumlah Siswa</label>
     <input type="number" id="jumlahSiswa" placeholder="Contoh: 30">
@@ -58,6 +80,19 @@
     <button onclick="bagiKelompok()">Gacha Kelompok</button>
 
     <div class="hasil" id="hasil"></div>
+
+    <!-- TEKS TAMBAHAN BUAT GOOGLE -->
+    <div class="deskripsi">
+        <p>
+            Tools ini cocok digunakan di sekolah untuk kegiatan diskusi kelompok,
+            kerja tim, dan pembelajaran kolaboratif tanpa harus membagi secara manual.
+        </p>
+        <p>
+            Guru cukup memasukkan jumlah siswa dan jumlah kelompok, maka sistem
+            akan otomatis membagi anggota kelompok secara merata.
+        </p>
+    </div>
+
 </div>
 
 <script>
@@ -74,7 +109,7 @@ function bagiKelompok() {
     }
 
     if (jumlahKelompok > jumlahSiswa) {
-        hasilDiv.innerHTML = "<p>Kelompok lebih banyak dari siswa.</p>";
+        hasilDiv.innerHTML = "<p>Jumlah kelompok tidak boleh lebih banyak dari siswa.</p>";
         return;
     }
 
@@ -110,4 +145,3 @@ function bagiKelompok() {
 
 </body>
 </html>
-
