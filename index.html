@@ -1,1 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Pembagi Kelompok Belajar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 30px;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #1e40af;
+        }
+        .hasil {
+            margin-top: 20px;
+        }
+        .kelompok {
+            background: #eef2ff;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Pembagi Kelompok Belajar</h2>
+
+    <label>Jumlah Siswa</label>
+    <input type="number" id="jumlahSiswa" placeholder="Contoh: 30">
+
+    <label>Jumlah Kelompok</label>
+    <input type="number" id="jumlahKelompok" placeholder="Contoh: 6">
+
+    <button onclick="bagiKelompok()">Gacha Kelompok</button>
+
+    <div class="hasil" id="hasil"></div>
+</div>
+
+<script>
+function bagiKelompok() {
+    const jumlahSiswa = parseInt(document.getElementById("jumlahSiswa").value);
+    const jumlahKelompok = parseInt(document.getElementById("jumlahKelompok").value);
+    const hasilDiv = document.getElementById("hasil");
+
+    hasilDiv.innerHTML = "";
+
+    if (isNaN(jumlahSiswa) || isNaN(jumlahKelompok) || jumlahSiswa <= 0 || jumlahKelompok <= 0) {
+        hasilDiv.innerHTML = "<p>Input tidak valid.</p>";
+        return;
+    }
+
+    if (jumlahKelompok > jumlahSiswa) {
+        hasilDiv.innerHTML = "<p>Kelompok lebih banyak dari siswa.</p>";
+        return;
+    }
+
+    // Buat nomor absen
+    let absen = [];
+    for (let i = 1; i <= jumlahSiswa; i++) {
+        absen.push(i);
+    }
+
+    // Shuffle (gacha)
+    for (let i = absen.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [absen[i], absen[j]] = [absen[j], absen[i]];
+    }
+
+    // Siapkan kelompok
+    let kelompok = Array.from({ length: jumlahKelompok }, () => []);
+
+    // Bagi adil
+    for (let i = 0; i < absen.length; i++) {
+        kelompok[i % jumlahKelompok].push(absen[i]);
+    }
+
+    // Tampilkan hasil
+    kelompok.forEach((k, index) => {
+        let div = document.createElement("div");
+        div.className = "kelompok";
+        div.innerHTML = `<strong>Kelompok ${index + 1} (${k.length} orang):</strong><br>` + k.join(", ");
+        hasilDiv.appendChild(div);
+    });
+}
+</script>
+
+</body>
+</html>
 
